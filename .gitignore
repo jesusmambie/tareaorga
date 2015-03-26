@@ -1,28 +1,255 @@
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
+#include <iostream>
+#include <string.h>
+#include <string>
+using namespace std;
 
-# Precompiled Headers
-*.gch
-*.pch
+int main () {
+  int N, M, i, j, l, cont, k, h, z, y;
+  cout<<"Tamaños de filas de su sopa de letras"<<endl;
+  cin>>N;
+  cout<<"Tamaños de columnas de su sopa de letras"<<endl;
+  cin>>M;
+  
+ char C;
+ char p[N][M];
+ char d[l];
+ char arr1[N];
+ int arr2[N];
+ h=0;
+ 
+ cout<<C<<endl;
+ cout<<"Ingrese las letras de la sopa"<<endl;
+ for (i=0; i<N; i++){
+   for (j=0; j<M; j++){
+   
+   cin>>p[i][j];
+   }
+ }
+ 
+  cout<<"La sopa de letras queda asi"<<endl;
+  for (i=0; i<N; i++){
+    cout<<endl;
+    for (j=0; j<M; j++){
+   cout<<p[i][j]<<" ";
+    }
+  }
+ cout<<endl;
+ 
+ cout<<"Ingrese la palabra a buscar"<<endl;
+ cin>>d;
+ for (j=0; d[j]!='\0'; j++) {
+ }
+  l=j;
+  for (i=0; i<j; i++) {
+     d[i];
+  }
+    while (d[0]!='*') {
+     
+      for (i=1; i<=N; i++){
+	
+	for (j=1; j<=M; j++){
+	  
 
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
-
-# Fortran module files
-*.mod
-
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
-
-# Executables
-*.exe
-*.out
-*.app
+	  
+	  if (d[0]==p[i-1][j-1]) {
+	  // Busqueda Diagonal Superior Izquierda
+	  
+	    if (((i-l)>=0) && ((j-l)>=0)) {
+	      cont=1;
+		for (k=1; k<=l; k++){
+		  arr1[k-1]=p[i-cont][j-cont];
+		  cont=cont+1;
+		}
+		z=l;
+		    for (y=0; y<=(l-1); y++) {
+			if   (arr1[y]==d[y]) { 
+			    z=z;
+			}else{
+			  
+			  z=z-1;
+			}
+		    }
+		    if (z==l) {
+		    h=h+1;
+		    cout<<"SI"<<endl;
+		    cout<<"DA DI "<<i-1<<" "<<j-1<<"  "<<i-1-l-1<<" "<<j-1-l-1<<endl;
+		  } 
+	    }
+	    //Busqueda Diagonal Superior Derecha 
+	     if (((i-l)>=0) && ((j+l)<=(M+1)))  {
+	      cont=1;
+		for (k=1; k<=l; k++){
+		  arr1[k-1]=p[i-cont][j+cont-2];
+		  cont=cont+1;
+		}
+		  z=l;
+		    for (y=0; y<=(l-1); y++) {
+			if   (arr1[y]==d[y]) { 
+			    z=z;
+			}else{
+			  
+			  z=z-1;
+			}
+		    }
+		    if (z==l) {
+		    h=h+1;
+		    cout<<"SI"<<endl;
+		    cout<<"DA ID "<<i-1<<" "<<j-1<<"  "<<i-l<<" "<<j-1+l-1<<endl;
+		  } 
+	  }
+	    //Busqueda Vertical Hacia Arriba
+	    if ((i-l)>=0) {
+	      cont=1;
+		for (k=1; k<=l; k++){
+		  arr1[k-1]=p[i-cont][j-1];
+		  cont=cont+1;
+		}
+		z=l;
+		    for (y=0; y<=(l-1); y++) {
+			if   (arr1[y]==d[y]) { 
+			    z=z;
+			}else{
+			  
+			  z=z-1;
+			}
+		    }
+		    if (z==l) {
+		    h=h+1;
+		    cout<<"SI"<<endl;
+		    cout<<"V AbA "<<i-1<<" "<<j-1<<"  "<<i-1-l-1<<" "<<j-1<<endl;
+		  } 
+	  }
+	  // Busqueda Vertical Hacia Abajo 
+	    if ((i+l)<=(N+1)) {
+	      cont=1;
+		for (k=1; k<=l; k++){
+		  arr1[k-1]=p[i+cont-2][j-1];
+		  cont=cont+1;
+		}
+		  z=l;
+		    for (y=0; y<=(l-1); y++) {
+			if   (arr1[y]==d[y]) { 
+			    z=z;
+			}else{
+			  
+			  z=z-1;
+			}
+		    }
+		    if (z==l) {
+		    h=h+1;
+		    cout<<"SI"<<endl;
+		    cout<<"V AAb "<<i-1<<" "<<j-1<<"  "<<i-1+l-1<<" "<<j-1<<endl;
+		  } 
+	  }
+	  //Busqueda Horizontal Derecha
+	     if ((j+l)<=(M+1)) {
+	      cont=1;
+		for (k=1; k<=l; k++){
+		  arr1[k-1]=p[i-1][j+cont-2];
+		  cont=cont+1;
+		}
+		  z=l;
+		    for (y=0; y<=(l-1); y++) {
+			if   (arr1[y]==d[y]) { 
+			    z=z;
+			}else{
+			  
+			  z=z-1;
+			}
+		    }
+		    if (z==l) {
+		    h=h+1;
+		    cout<<"SI"<<endl;
+		    cout<<"H ID "<<i-1<<" "<<j-1<<"  "<<i-1<<" "<<j-1+l-1<<endl;
+		  } 
+	  }
+	  //Busqueda Horizontal Izquierda
+	     if ((j-l)>=0) {
+	      cont=1;
+		for (k=1; k<=l; k++){
+		  arr1[k-1]=p[i-1][j-cont];
+		  cont=cont+1;
+		}
+		  z=l;
+		    for (y=0; y<=(l-1); y++) {
+			if   (arr1[y]==d[y]) { 
+			    z=z;
+			}else{
+			  
+			  z=z-1;
+			}
+		    }
+		    if (z==l) {
+		    h=h+1;
+		    cout<<"SI"<<endl;
+		    cout<<"H DI "<<i-1<<" "<<j-1<<"  "<<i-1<<" "<<j-1-l-1<<endl;
+		  } 
+	  }
+	  //Busqueda Diagonal Inferior Derecha
+	     if (((i+l)<=(N+1)) && ((j+l)<=(M+1))) {
+	      cont=1;
+		for (k=1; k<=l; k++){
+		  arr1[k-1]=p[i+cont-2][j+cont-2];
+		  cont=cont+1;
+		}
+		  z=l;
+		    for (y=0; y<=(l-1); y++) {
+			if   (arr1[y]==d[y]) { 
+			    z=z;
+			}else{
+			  
+			  z=z-1;
+			}
+		    }
+		    if (z==l) {
+		    h=h+1;
+		    cout<<"SI"<<endl;
+		    cout<<"DD ID "<<i-1<<" "<<j-1<<"  "<<i-1+l-1<<" "<<j-1+l-1<<endl;
+		  } 
+	  }
+	  //Busqueda Diagonal Inferior Izquierda
+	     if (((i+l)<=(N+1) && (j-l)>=0)) {
+	      cont=1;
+		for (k=1; k<=l; k++){
+		  arr1[k-1]=p[i+cont-2][j-cont];
+		  cont=cont+1;
+		}
+		  z=l;
+		    for (y=0; y<=(l-1); y++) {
+			if   (arr1[y]==d[y]) { 
+			    z=z;
+			}else{
+			  
+			  z=z-1;
+			}
+		    }
+		    if (z==l) {
+		    h=h+1;
+		    cout<<"SI"<<endl;
+		    cout<<"DD DI "<<i-1<<" "<<j-1<<"  "<<i-1+l-1<<" "<<j-1-l-1<<endl;
+		  } 
+	  }
+	  
+	}
+      }
+      }
+      if (h!=0) {
+	cout<<h<<endl;
+      }
+      if (h==0) {
+	cout<<"No"<<endl;
+      }
+      cout<<"Ingrese la palabra a buscar"<<endl;
+	cin>>d;
+	for (j=0; d[j]!='\0'; j++) {
+	}
+	  l=j;
+	  for (i=0; i<j; i++) {
+	    d[i];
+	    }
+      h=0;
+    }
+    
+ return 0;
+}
+   
